@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`w-screen min-h-screen flex flex-col bg-black-primary text-white ${openSans.className}`}>{children}</body>
     </html>
   );
