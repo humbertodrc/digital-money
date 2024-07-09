@@ -1,8 +1,14 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import {Open_Sans} from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/layout/footer/Footer";
 
-const inter = Inter({subsets: ["latin"]});
+const openSans = Open_Sans({
+	weight: ["300", "400", "600", "800"],
+	style: ["normal"],
+	subsets: ["latin"],
+	display: "swap",
+});
 
 export const metadata: Metadata = {
 	title: "Digital Money",
@@ -16,8 +22,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>{children}</body>
+		<html lang="es">
+			<body
+				className={`w-screen min-h-screen flex flex-col bg-black-primary text-white ${openSans.className}`}
+			>
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }
