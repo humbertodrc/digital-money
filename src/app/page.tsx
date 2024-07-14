@@ -12,7 +12,7 @@ export default function Home() {
 	return (
 		<>
 			<Header logoLink="/" logoClassName="fill-primary" links={links} />
-			<main className="relative w-full p-5 flex flex-col grow justify-between md:p-20 bg-landing-image bg-cover bg-center bg-no-repeat 2xl:bg-[50%_25%]">
+			<main className="relative w-full p-5 flex flex-col grow justify-between md:p-20 bg-landing-image bg-cover bg-center bg-no-repeat 2xl:bg-[50%_30%]">
 				<section className="w-2/3 pt-10 mb-10 flex flex-col gap-5 md:w-1/2 2xl:w-2/5">
 					<Title
 						title={landingData.title}
