@@ -9,7 +9,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				"landing-image": "url('/img/landing-image.webp')",
+				"landing-image": "url('/img/bg-digital-money.webp')",
 			},
 		},
 		colors: {
