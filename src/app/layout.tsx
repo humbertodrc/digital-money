@@ -24,7 +24,7 @@ export default function RootLayout({
 	return (
 		<html lang="es">
 			<body
-				className={`w-full min-h-screen flex flex-col bg-black-primary text-white ${openSans.className}`}
+				className={`w-full min-h-screen flex flex-col justify-between bg-black-primary text-white ${openSans.className}`}
 			>
 				{children}
 				<Footer />
