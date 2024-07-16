@@ -6,17 +6,19 @@ type Link = {
 	href: string;
 	text: string;
 	outline?: boolean;
+	solid?: boolean;
 };
 
 interface HeaderProps {
   logoClassName: string;
-  logoLink: string;
+	logoLink: string;
+	headerClassName?: string;
 	links: Link[];
 }
 
-export default function Header({logoClassName, logoLink, links}: HeaderProps) {
+export default function Header({logoClassName, logoLink, headerClassName, links}: HeaderProps) {
 	return (
-		<header className="p-5 flex flex-row justify-between bg-transparent md:px-20 xl:px-5">
+		<header className={clsx('p-5 flex flex-row justify-between md:px-20 xl:px-5', headerClassName)}>
 			<HeaderLogo className={logoClassName} href={logoLink} />
 			<div className="flex flex-row gap-2">
 				{links.map((link, index) => (
@@ -28,6 +30,7 @@ export default function Header({logoClassName, logoLink, links}: HeaderProps) {
 							{
 								"bg-primary text-black border-none": !link.outline,
 								"border-primary text-primary": link.outline,
+								"bg-secondary text-white": link.solid,
 							}
 						)}
 					>
