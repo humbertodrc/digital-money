@@ -3,18 +3,20 @@ import TextInput from "@/components/common/TextInput";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import {useRouter} from "next/navigation";
+import { postSignup } from "@/services/signup";
 
 const shema = yup
 	.object({
-		name: yup
+		firstname: yup
 			.string()
 			.required("El campo es requerido")
 			.matches(/^(?! )[A-Za-z\s]+$/, "El campo solo puede contener letras"),
-		lastName: yup
+			lastname: yup
 			.string()
 			.required("El campo es requerido")
 			.matches(/^(?! )[A-Za-z\s]+$/, "El campo solo puede contener letras"),
-		dni: yup.string().required("El campo es requerido"),
+		dni: yup.number().positive().integer().required("El campo es requerido"),
 		email: yup.string().required("El campo es requerido").matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Correo inválido"),
 		password: yup.string().required("El campo es requerido").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/, "Contraseña inválida"),
 		confirmPassword: yup
@@ -26,17 +28,18 @@ const shema = yup
 	.required();
 
 export default function SignupForm() {
+	const router = useRouter();
 	const {
 		control,
 		handleSubmit,
 		formState: {errors},
-		getValues,
+		reset,
 	} = useForm({
 		resolver: yupResolver(shema),
 		defaultValues: {
-			name: "",
-			lastName: "",
-			dni: "",
+			firstname: "",
+			lastname: "",
+			dni: undefined,
 			email: "",
 			password: "",
 			confirmPassword: "",
@@ -45,7 +48,17 @@ export default function SignupForm() {
 	});
 
 	const onSubmit = async (data: any) => {
-		console.log(data);
+		const resp = await postSignup(data);
+		console.log(resp);
+
+		// Limpiamos los campos
+		reset();
+
+		if (resp) {
+			// Si el registro es exitoso, redirigimos al usuario a la pagina de registro exitoso
+			router.push("/signup/success");
+		}
+		
 	};
 
 	return (
@@ -56,15 +69,15 @@ export default function SignupForm() {
 					{/* Nombre */}
 					<div>
 						<Controller
-							name="name"
+							name="firstname"
 							control={control}
 							render={({field}) => (
 								<TextInput
 									{...field}
-									id="name"
+									id="firstname"
 									type="text"
 									placeholder="Nombre*"
-									errorText={errors.name?.message}
+									errorText={errors.firstname?.message}
 								/>
 							)}
 						/>
@@ -72,15 +85,15 @@ export default function SignupForm() {
 					{/* Apellido */}
 					<div>
 						<Controller
-							name="lastName"
+							name="lastname"
 							control={control}
 							render={({field}) => (
 								<TextInput
 									{...field}
-									id="lastName"
+									id="lastname"
 									type="text"
 									placeholder="Apellido*"
-									errorText={errors.lastName?.message}
+									errorText={errors.lastname?.message}
 								/>
 							)}
 						/>
@@ -94,7 +107,9 @@ export default function SignupForm() {
 								<TextInput
 									{...field}
 									id="dni"
+									type="number"
 									placeholder="DNI*"
+									defaultValue={""}
 									errorText={errors.dni?.message}
 								/>
 							)}
