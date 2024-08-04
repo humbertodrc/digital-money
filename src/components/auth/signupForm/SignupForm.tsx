@@ -64,7 +64,6 @@ export default function SignupForm() {
 									id="name"
 									type="text"
 									placeholder="Nombre*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.name?.message}
 								/>
 							)}
@@ -81,7 +80,6 @@ export default function SignupForm() {
 									id="lastName"
 									type="text"
 									placeholder="Apellido*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.lastName?.message}
 								/>
 							)}
@@ -97,7 +95,6 @@ export default function SignupForm() {
 									{...field}
 									id="dni"
 									placeholder="DNI*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.dni?.message}
 								/>
 							)}
@@ -114,7 +111,6 @@ export default function SignupForm() {
 									id="email"
 									type="email"
 									placeholder="Correo*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.email?.message}
 								/>
 							)}
@@ -140,7 +136,6 @@ export default function SignupForm() {
 									id="password"
 									type="password"
 									placeholder="Contraseña*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.password?.message}
 								/>
 							)}
@@ -157,7 +152,6 @@ export default function SignupForm() {
 									id="confirmPassword"
 									type="password"
 									placeholder="Confirmar contraseña*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.confirmPassword?.message}
 								/>
 							)}
@@ -174,7 +168,6 @@ export default function SignupForm() {
 									id="phone"
 									type="text"
 									placeholder="Teléfono*"
-									wrapperClassName="mt-2.5"
 									errorText={errors.phone?.message}
 								/>
 							)}
