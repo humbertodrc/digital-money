@@ -13,7 +13,7 @@ interface HeaderProps {
   logoClassName: string;
 	logoLink: string;
 	headerClassName?: string;
-	links: Link[];
+	links?: Link[];
 }
 
 export default function Header({logoClassName, logoLink, headerClassName, links}: HeaderProps) {
@@ -21,7 +21,7 @@ export default function Header({logoClassName, logoLink, headerClassName, links}
 		<header className={clsx('p-5 flex flex-row justify-between md:px-20 xl:px-5', headerClassName)}>
 			<HeaderLogo className={logoClassName} href={logoLink} />
 			<div className="flex flex-row gap-2">
-				{links.map((link, index) => (
+				{links && links.map((link, index) => (
 					<Link
 						key={`${link.text}-${index}`}
 						href={link.href}
