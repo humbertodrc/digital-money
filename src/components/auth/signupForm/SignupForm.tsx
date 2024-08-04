@@ -15,8 +15,8 @@ const shema = yup
 			.required("El campo es requerido")
 			.matches(/^(?! )[A-Za-z\s]+$/, "El campo solo puede contener letras"),
 		dni: yup.string().required("El campo es requerido"),
-		email: yup.string().required("El campo es requerido"),
-		password: yup.string().required("El campo es requerido"),
+		email: yup.string().required("El campo es requerido").matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Correo inválido"),
+		password: yup.string().required("El campo es requerido").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/, "Contraseña inválida"),
 		confirmPassword: yup
 			.string()
 			.required("El campo es requerido")
@@ -55,30 +55,15 @@ export default function SignupForm() {
 				<div className="grid xl:grid-cols-2 gap-5 2xl:gap-x-16 2xl:gap-y-10">
 					{/* Nombre */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="Nombre*"
-							type="text"
-							id="name"
-						/> */}
 						<Controller
 							name="name"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	pattern: {
-							// 		value: /^(?! )[A-Za-z\s]+$/,
-							// 		message: "El campo solo puede contener letras",
-							// 	},
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="name"
 									type="text"
+									placeholder="Nombre*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.name?.message}
 								/>
@@ -87,30 +72,15 @@ export default function SignupForm() {
 					</div>
 					{/* Apellido */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="Apellido*"
-							type="text"
-							id="lastName"
-						/> */}
 						<Controller
 							name="lastName"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	pattern: {
-							// 		value: /^(?! )[A-Za-z\s]+$/,
-							// 		message: "El campo solo puede contener letras",
-							// 	},
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="lastName"
 									type="text"
+									placeholder="Apellido*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.lastName?.message}
 								/>
@@ -119,29 +89,14 @@ export default function SignupForm() {
 					</div>
 					{/* DNI */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="DNI*"
-							type="text"
-							id="dni"
-						/> */}
 						<Controller
 							name="dni"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	// pattern: {
-							// 	// 	value: /^[0-9]{8,8}$/,
-							// 	// 	message: "El DNI debe tener 8 dígitos",
-							// 	// },
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="dni"
+									placeholder="DNI*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.dni?.message}
 								/>
@@ -150,30 +105,15 @@ export default function SignupForm() {
 					</div>
 					{/* Correo */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="Correo*"
-							type="email"
-							id="email"
-						/> */}
 						<Controller
 							name="email"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	// pattern: {
-							// 	// 	value: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-							// 	// 	message: "El correo no es válido",
-							// 	// },
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="email"
 									type="email"
+									placeholder="Correo*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.email?.message}
 								/>
@@ -191,39 +131,15 @@ export default function SignupForm() {
 				<div className="grid xl:grid-cols-2 gap-5 2xl:gap-x-16 2xl:gap-y-10">
 					{/* Contraseña */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="Contraseña*"
-							type="password"
-							id="password"
-						/> */}
 						<Controller
 							name="password"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	// minLength: {
-							// 	// 	value: 6,
-							// 	// 	message: "La contraseña debe tener al menos 6 caracteres",
-							// 	// },
-							// 	// maxLength: {
-							// 	// 	value: 20,
-							// 	// 	message: "La contraseña debe tener máximo 20 caracteres",
-							// 	// },
-							// 	// pattern: {
-							// 	// 	value: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$/,
-							// 	// 	message:
-							// 	// 		"La contraseña debe tener al menos 1 carácter especial, una mayúscula y un número",
-							// 	// },
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="password"
 									type="password"
+									placeholder="Contraseña*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.password?.message}
 								/>
@@ -232,29 +148,15 @@ export default function SignupForm() {
 					</div>
 					{/* Confirmar contraseña */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="Confirmar contraseña*"
-							type="password"
-							id="confirmPassword"
-						/> */}
 						<Controller
 							name="confirmPassword"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	validate: (value) =>
-							// 		value === getValues("password") ||
-							// 		"Las contraseñas no coinciden",
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="confirmPassword"
 									type="password"
+									placeholder="Confirmar contraseña*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.confirmPassword?.message}
 								/>
@@ -263,30 +165,15 @@ export default function SignupForm() {
 					</div>
 					{/* Telefono */}
 					<div>
-						{/* <input
-							className="w-full p-5 rounded-lg text-black text-base focus:outline-2 focus:outline-primary "
-							placeholder="Teléfono*"
-							type="text"
-							id="phone"
-						/> */}
 						<Controller
 							name="phone"
 							control={control}
-							// rules={{
-							// 	required: {
-							// 		value: true,
-							// 		message: "El campo es requerido",
-							// 	},
-							// 	// pattern: {
-							// 	// 	value: /^[0-9]{9,9}$/,
-							// 	// 	message: "El teléfono debe tener 9 dígitos",
-							// 	// },
-							// }}
 							render={({field}) => (
 								<TextInput
 									{...field}
 									id="phone"
 									type="text"
+									placeholder="Teléfono*"
 									wrapperClassName="mt-2.5"
 									errorText={errors.phone?.message}
 								/>

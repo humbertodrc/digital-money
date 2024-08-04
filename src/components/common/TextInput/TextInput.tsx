@@ -21,7 +21,7 @@ const TextInput = forwardRef(function TextInput(
 ) {
   hasError = hasError || Boolean(errorText)
   return (
-    <div className={clsx('relative', wrapperClassName)}>
+    <div className={wrapperClassName}>
       <input
         type={type}
         ref={ref}
@@ -38,7 +38,7 @@ const TextInput = forwardRef(function TextInput(
       />
       {errorText && (
         <p
-          className="text-sm italic text-error font-normal absolute py-1 pl-3 left-2 pr-3 top-1/2 -translate-y-1/2 truncate peer-focus:opacity-0 pointer-events-none transition text-left w-full"
+          className="text-sm italic text-error font-normal mt-1 py-1 pl-3 left-2 pr-3  truncate peer-focus:opacity-0 pointer-events-none transition text-left w-full"
           style={{
             maxWidth: 'calc(100% - 1rem)'
           }}
