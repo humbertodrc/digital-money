@@ -29,6 +29,9 @@ const config: Config = {
 			"black-primary": {
 				DEFAULT: "#201F22",
 			},
+			error: {
+				DEFAULT: "#EE3838",
+			},
 		},
 		fontSize: {
 			base: ["1rem", "1.5rem"], // 16px
