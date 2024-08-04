@@ -4,19 +4,25 @@ Digital Money es una aplicación de billetera virtual desarrollada con Next.js. 
 
 ## Instalación
 
-1. Para instalar y ejecutar el proyecto localmente:
+1. Clonar el archivo .env.example y renombrarlo a .env:
+
+```bash
+   cp .env.example .env
+```
+
+2. Para instalar y ejecutar el proyecto localmente:
 
 ```bash
    git clone <URL_DEL_REPOSITORIO>
 ```
 
-2. Instala las dependencias del proyecto:
+3. Instala las dependencias del proyecto:
 
 ```bash
    npm install
 ```
 
-3. Ejecuta el proyecto en modo de desarrollo:
+4. Ejecuta el proyecto en modo de desarrollo:
 
 ```bash
    npm run dev
