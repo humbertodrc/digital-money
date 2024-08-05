@@ -2,30 +2,10 @@
 import TextInput from "@/components/common/TextInput";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import {useRouter} from "next/navigation";
-import { postSignup } from "@/services/signup";
-
-const shema = yup
-	.object({
-		firstname: yup
-			.string()
-			.required("El campo es requerido")
-			.matches(/^(?! )[A-Za-z\s]+$/, "El campo solo puede contener letras"),
-			lastname: yup
-			.string()
-			.required("El campo es requerido")
-			.matches(/^(?! )[A-Za-z\s]+$/, "El campo solo puede contener letras"),
-		dni: yup.number().positive().integer().required("El campo es requerido"),
-		email: yup.string().required("El campo es requerido").matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Correo inválido"),
-		password: yup.string().required("El campo es requerido").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/, "Contraseña inválida"),
-		confirmPassword: yup
-			.string()
-			.required("El campo es requerido")
-			.oneOf([yup.ref("password")], "Las contraseñas no coinciden"),
-		phone: yup.string().required("El campo es requerido"),
-	})
-	.required();
+import {postSignup} from "@/services/signup";
+import {shema} from "@/schema";
+import {SignupData} from "@/interfaces/signup";
 
 export default function SignupForm() {
 	const router = useRouter();
@@ -39,7 +19,7 @@ export default function SignupForm() {
 		defaultValues: {
 			firstname: "",
 			lastname: "",
-			dni: undefined,
+			dni: "",
 			email: "",
 			password: "",
 			confirmPassword: "",
@@ -47,18 +27,22 @@ export default function SignupForm() {
 		},
 	});
 
-	const onSubmit = async (data: any) => {
-		const resp = await postSignup(data);
-		console.log(resp);
+	const onSubmit = async (data: SignupData) => {
+		const {dni} = data;
 
-		// Limpiamos los campos
+		const body = {
+			...data,
+			dni: Number(dni),
+		};
+
+		const resp = await postSignup(body);
+
 		reset();
 
 		if (resp) {
 			// Si el registro es exitoso, redirigimos al usuario a la pagina de registro exitoso
 			router.push("/signup/success");
 		}
-		
 	};
 
 	return (
@@ -107,9 +91,8 @@ export default function SignupForm() {
 								<TextInput
 									{...field}
 									id="dni"
-									type="number"
+									type="text"
 									placeholder="DNI*"
-									defaultValue={""}
 									errorText={errors.dni?.message}
 								/>
 							)}
