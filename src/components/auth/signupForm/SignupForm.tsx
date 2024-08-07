@@ -5,7 +5,8 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useRouter} from "next/navigation";
 import {postSignup} from "@/services/signup";
 import {shema} from "@/schema";
-import {SignupData} from "@/interfaces/signup";
+import { SignupData } from "@/interfaces/signup";
+import Button from "@/components/common/Button/Button";
 
 export default function SignupForm() {
 	const router = useRouter();
@@ -173,9 +174,9 @@ export default function SignupForm() {
 					</div>
 					{/* Button */}
 					<div>
-						<button className="w-full p-5 rounded-lg text-black text-base font-bold bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary">
+						<Button className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary">
 							Crear cuenta
-						</button>
+						</Button>
 					</div>
 				</div>
 			</form>
