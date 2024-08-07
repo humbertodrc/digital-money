@@ -1,4 +1,4 @@
-import HeaderLogo from "@/components/common/icons/HeaderLogo";
+import HeaderLogo from "@/components/common/Icons/HeaderLogo";
 import clsx from "clsx";
 import Link from "next/link";
 
