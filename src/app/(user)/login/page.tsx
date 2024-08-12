@@ -1,6 +1,6 @@
 import LoginForm from "@/components/auth/loginForm/LoginForm";
 import Header from "@/components/layout/header/Header";
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers';
 
 export default function LoginPage() {
   const signupSuccess = cookies().get("signupSuccess");

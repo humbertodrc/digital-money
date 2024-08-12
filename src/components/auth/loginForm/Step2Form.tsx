@@ -1,9 +1,9 @@
 "use client";
 import Button from "@/components/common/Button/Button";
 import TextInput from "@/components/common/TextInput";
-import {Controller, useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {shemaEmail, shemaPassword} from "@/schema/login";
+import { shemaPassword } from "@/schema/login";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Controller, useForm } from "react-hook-form";
 
 interface Step2FormProps {
 	onSubmit: (data: any) => void;
