@@ -1,48 +1,65 @@
 "use client";
 import Button from "@/components/common/Button/Button";
 import TextInput from "@/components/common/TextInput";
-import { Controller, useForm } from "react-hook-form";
+import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
-import { shemaEmail } from "@/schema/login";
+import {shemaEmail} from "@/schema/login";
+import {Cookie} from "@/interfaces/login";
 
 interface Step1FormProps {
 	onSubmit: (data: any) => void;
+	isSignupSuccess: Cookie | undefined;
 }
 
-export default function Step1Form({onSubmit}: Step1FormProps) {
+export default function Step1Form({onSubmit, isSignupSuccess}: Step1FormProps) {
 	const {
 		control,
 		handleSubmit,
 		formState: {errors},
-  } = useForm({
-    resolver: yupResolver(shemaEmail),
-    defaultValues: {
-      email: "",
-    },
-  });
+	} = useForm({
+		resolver: yupResolver(shemaEmail),
+		defaultValues: {
+			email: "",
+		},
+	});
 
 	return (
-		<form
-			onSubmit={handleSubmit(onSubmit)}
-			className="w-full flex flex-col gap-1"
-		>
-			<Controller
-				name="email"
-				control={control}
-				render={({field}) => (
-          <TextInput
-            wrapperClassName="h-24"
-						{...field}
-						id="email"
-						type="email"
-						placeholder="Correo*"
-						errorText={errors.email?.message}
-					/>
-				)}
-			/>
-			<Button type="submit" className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary">
-				Continuar
-			</Button>
-		</form>
+		<>
+			<p className="text-lg font-semibold mb-10">¡Hola! Ingresá tu e-mail</p>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className="w-full flex flex-col gap-1"
+			>
+				<Controller
+					name="email"
+					control={control}
+					render={({field}) => (
+						<TextInput
+							wrapperClassName="h-24"
+							{...field}
+							id="email"
+							type="email"
+							placeholder="Correo*"
+							errorText={errors.email?.message}
+						/>
+					)}
+				/>
+				<Button
+					type="submit"
+					className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary"
+				>
+					Continuar
+				</Button>
+			</form>
+			{!isSignupSuccess && (
+				<Button
+					asLink
+					href="/signup"
+					className="text-black bg-gray hover:bg-tertiary mt-8 w-full"
+				>
+					Crear cuenta
+				</Button>
+			)}
+		</>
 	);
 }
