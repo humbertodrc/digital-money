@@ -7,6 +7,7 @@ interface PostLoginBody {
 
 interface PostLoginResponse {
 	token: string;
+	error?: string;
 }
 
 export async function postLogin(
