@@ -24,16 +24,10 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 	return (
 		<main className="w-full px-4 md:px-0 flex flex-col items-center justify-center md:w-2/3 xl:w-96 mx-auto my-8">
 			<>
-				<Step1Form onSubmit={handleEmailSubmit} />
-				{!isSignupSuccess && (
-					<Button
-						asLink
-						href="/signup"
-						className="text-black bg-gray hover:bg-tertiary mt-8 w-full"
-					>
-						Crear cuenta
-					</Button>
-				)}
+				<Step1Form
+					onSubmit={handleEmailSubmit}
+					isSignupSuccess={isSignupSuccess}
+				/>
 			</>
 			<>
 				<Step2Form onSubmit={handlePasswordSubmit} />
