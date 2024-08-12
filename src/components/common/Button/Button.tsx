@@ -7,6 +7,7 @@ interface ButtonProps {
 	href?: string;
 	asLink?: boolean;
 	onClick?: () => void;
+	type?: "button" | "submit" | "reset";
 }
 
 export default function Button({
@@ -15,6 +16,7 @@ export default function Button({
 	href,
 	asLink = false,
 	onClick,
+	type,
 	...props
 }: ButtonProps) {
 	if (asLink && href) {
@@ -34,6 +36,7 @@ export default function Button({
 	return (
 		<button
 			onClick={onClick}
+			type={type}
 			{...props}
 			className={clsx(
 				"w-full p-5 rounded-lg text-black text-base font-bold text-center",
