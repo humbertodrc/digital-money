@@ -22,27 +22,33 @@ export default function Step2Form({onSubmit}: Step2FormProps) {
 	});
 
 	return (
-		<form
-			onSubmit={handleSubmit(onSubmit)}
-			className="w-full flex flex-col gap-1"
-		>
-			<Controller
-				name="password"
-				control={control}
-				render={({field}) => (
-          <TextInput
-            wrapperClassName="h-24"
-						{...field}
-						id="password"
-						type="password"
-						placeholder="Contraseña*"
-						errorText={errors.password?.message}
-					/>
-				)}
-			/>
-			<Button type="submit" className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary">
-				Continuar
-			</Button>
-		</form>
+		<>
+			<p className="text-lg font-semibold mb-10">Ingresá tu contraseña</p>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className="w-full flex flex-col gap-1"
+			>
+				<Controller
+					name="password"
+					control={control}
+					render={({field}) => (
+						<TextInput
+							wrapperClassName="h-24"
+							{...field}
+							id="password"
+							type="password"
+							placeholder="Contraseña*"
+							errorText={errors.password?.message}
+						/>
+					)}
+				/>
+				<Button
+					type="submit"
+					className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary"
+				>
+					Continuar
+				</Button>
+			</form>
+		</>
 	);
 }
