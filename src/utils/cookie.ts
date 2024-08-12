@@ -21,7 +21,7 @@ export const getCookieAuth = (name: string) => {
 
 export const setCookieRegisterSuccess = () => {
   const date = new Date();
-  date.setTime(date.getTime() + 1 * 24 * 60 * 60 * 1000); // 1 día de expiración cambiar este valor si es necesario
+  date.setTime(date.getTime() + 1 * 60 * 1000); // 1 minuto de expiración
   cookies().set("signupSuccess", "true", {
     expires: date,
   });
