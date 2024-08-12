@@ -19,10 +19,9 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 	const handlePasswordSubmit = async (data: {password: string}) => {
 		const updatedData = {...userData, password: data.password};
 
-		// Aquí es donde harías la llamada a la API con updatedData
+		// TODO: Implementar la llamada a la API
 		// const resp = await postLogin(updatedData);
 
-		console.log(updatedData);
 	};
 
 	// Si el usuario regresa al paso 1, por medio del browser, reseteamos el estado
