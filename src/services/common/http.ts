@@ -45,6 +45,7 @@ interface HttpGetOptions extends RequestInit {
 export const httpGet = async (endpoint: string, options: HttpGetOptions = {}): Promise<unknown> => {
   const headers = {
     ...defaultHeaders,
+    ...getUserConfigHeaders(),
     ...options.headers,
   };
 
@@ -67,6 +68,7 @@ export const httpGet = async (endpoint: string, options: HttpGetOptions = {}): P
 export const httpPost = async (endpoint: string, body: object, options: HttpGetOptions = {}): Promise<unknown> => {
   const headers: HeadersInit = {
     ...defaultHeaders,
+    ...getUserConfigHeaders(),
     ...options.headers,
   } as { [key: string]: string };
 
@@ -98,6 +100,7 @@ export const httpPost = async (endpoint: string, body: object, options: HttpGetO
 export const httpPut = async (endpoint: string, body: object, options: HttpGetOptions = {}): Promise<unknown> => {
   const headers = {
     ...defaultHeaders,
+    ...getUserConfigHeaders(),
     ...options.headers,
   };
 
@@ -120,6 +123,7 @@ export const httpPut = async (endpoint: string, body: object, options: HttpGetOp
 export const httpDelete = async (endpoint: string, options: HttpGetOptions = {}): Promise<unknown> => {
   const headers = {
     ...defaultHeaders,
+    ...getUserConfigHeaders(),
     ...options.headers,
   };
 
@@ -132,19 +136,14 @@ export const httpDelete = async (endpoint: string, options: HttpGetOptions = {})
 };
 
 // Configuración de headers de usuario
-// const getUserConfigHeaders = (): HeadersInit => {
-//   const headers: HeadersInit = {};
-//   if (typeof window !== 'undefined' && !headers.Authorization) {
-//     const token = localStorage.getItem('acc_token');
-//     if (token) {
-//       headers.Authorization = `Bearer ${token}`;
-//     }
+const getUserConfigHeaders = (): HeadersInit => {
+  const headers: HeadersInit = {};
+  if (typeof window !== 'undefined' && !headers.Authorization) {
+    const token = localStorage.getItem('acc_token');
+    if (token) {
+      headers.Authorization = `${token}`;
+    }
+  }
 
-//     const currency = localStorage.getItem('currency');
-//     if (currency) {
-//       headers['X-Currency'] = currency;
-//     }
-//   }
-
-//   return headers;
-// };
+  return headers;
+};
