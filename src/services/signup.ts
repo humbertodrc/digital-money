@@ -1,5 +1,6 @@
 import {PostSignupBody, PostSignupResponse} from "@/interfaces/signup";
 import {httpPost} from "./common/http";
+import { setCookieRegisterSuccess } from "@/utils/cookie";
 
 export async function postSignup(
 	body: PostSignupBody,
@@ -11,7 +12,11 @@ export async function postSignup(
 		},
 		...options,
 	})
-		.then((data) => data as PostSignupResponse)
+		.then((data) => {
+			// Si el registro es exitoso, seteamos la cookie de registro exitoso
+			setCookieRegisterSuccess();
+			return data as PostSignupResponse
+		})
 		.catch((error) => {
 			console.log(error);
 			throw error;
