@@ -32,6 +32,9 @@ const config: Config = {
 			error: {
 				DEFAULT: "#EE3838",
 			},
+			gray: {
+				DEFAULT: "#CECECE",
+			},
 		},
 		fontSize: {
 			base: ["1rem", "1.5rem"], // 16px
