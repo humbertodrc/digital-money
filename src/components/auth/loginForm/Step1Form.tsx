@@ -5,6 +5,7 @@ import { Cookie } from "@/interfaces/login";
 import { shemaEmail } from "@/schema/login";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
+import ButtonRegister from "./ButtonRegister";
 
 interface Step1FormProps {
 	onSubmit: (data: any) => void;
@@ -52,13 +53,7 @@ export default function Step1Form({onSubmit, isSignupSuccess}: Step1FormProps) {
 				</Button>
 			</form>
 			{!isSignupSuccess && (
-				<Button
-					asLink
-					href="/signup"
-					className="text-black bg-gray hover:bg-tertiary mt-8 w-full"
-				>
-					Crear cuenta
-				</Button>
+				<ButtonRegister />
 			)}
 		</>
 	);
