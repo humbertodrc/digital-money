@@ -13,8 +13,6 @@ export async function postSignup(
 		...options,
 	})
 		.then((data) => {
-			// Si el registro es exitoso, seteamos la cookie de registro exitoso
-			setCookieRegisterSuccess();
 			return data as PostSignupResponse
 		})
 		.catch((error) => {
