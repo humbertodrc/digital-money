@@ -28,8 +28,9 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 		try {
 			const resp = await postLogin(updatedData);
 			if (resp.token && !resp.error) {
+				// Guardamos el token en una cookie valido por un día
 				setCookie('authToken', resp.token, {
-					expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+					expires: new Date(Date.now() + 86400 * 1000),
 				});
 
 				router.push("/dashboard");
