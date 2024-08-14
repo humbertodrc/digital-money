@@ -7,6 +7,7 @@ import {postSignup} from "@/services/signup";
 import {shema} from "@/schema";
 import { SignupData } from "@/interfaces/signup";
 import Button from "@/components/common/Button/Button";
+import { setCookie } from 'cookies-next';
 
 
 export default function SignupForm() {
@@ -42,6 +43,11 @@ export default function SignupForm() {
 		reset();
 
 		if (resp) {
+			// Guardamos una cookie para saber si el registro fue exitoso expira en 2 minutos
+			setCookie('signupSuccess', 'true', {
+				expires: new Date(Date.now() + 1000 * 60 * 2),
+			});
+
 			// Si el registro es exitoso, redirigimos al usuario a la pagina de registro exitoso
 			router.push("/signup/success");
 		}
