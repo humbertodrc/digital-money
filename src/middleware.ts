@@ -15,9 +15,9 @@ export function middleware(request: NextRequest) {
   
 
   // Verificamos si el usuario tiene un token de autenticación
-  // if (!cookieHasAuthToken && url.pathname.startsWith("/dashboard")) {
-  //   return NextResponse.redirect(new URL("/", request.url));
-  // }
+  if (!cookieHasAuthToken && url.pathname.startsWith("/dashboard")) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 
   // Permitir el acceso a la ruta solicitada
   return NextResponse.next();
