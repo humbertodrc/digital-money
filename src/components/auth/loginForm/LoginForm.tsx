@@ -5,8 +5,8 @@ import Step1Form from "./Step1Form";
 import Step2Form from "./Step2Form";
 import {postLogin} from "@/services/auth";
 import {useRouter} from "next/navigation";
-import {set} from "react-hook-form";
 import BackIcon from "@/components/common/Icons/BackIcon";
+import { setCookie } from 'cookies-next';
 
 export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 	const [userData, setUserData] = useState<UserData>({email: ""});
@@ -28,6 +28,10 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 		try {
 			const resp = await postLogin(updatedData);
 			if (resp.token && !resp.error) {
+				setCookie('authToken', resp.token, {
+					expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
+				});
+
 				router.push("/dashboard");
 			}
 		} catch (error) {
