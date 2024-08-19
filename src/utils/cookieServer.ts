@@ -2,7 +2,7 @@
 import {Cookie} from "@/interfaces/cookie";
 import {cookies} from "next/headers";
 
-export const setCookieAuth = ({name, value, days}: Cookie) => {
+export const setCookieServerAuth = ({name, value, days}: Cookie) => {
 	const date = new Date();
 	date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 	cookies().set(name, value, {
@@ -10,16 +10,16 @@ export const setCookieAuth = ({name, value, days}: Cookie) => {
 	});
 };
 
-export const removeCookieAuth = (name: string) => {
+export const removeCookieServerAuth = (name: string) => {
 	cookies().delete(name);
 };
 
-export const getCookieAuth = (name: string) => {
+export const getCookieServeAuth = (name: string) => {
 	return cookies().get(name);
 };
 
 
-export const setCookieRegisterSuccess = () => {
+export const setCookieServerRegisterSuccess = () => {
   const date = new Date();
   date.setTime(date.getTime() + 1 * 60 * 1000); // 1 minuto de expiración
   cookies().set("signupSuccess", "true", {
@@ -27,6 +27,6 @@ export const setCookieRegisterSuccess = () => {
   });
 }
 
-export const removeCookieRegisterSuccess = () => {
+export const removeCookieServerRegisterSuccess = () => {
   cookies().delete("signupSuccess");
 }
