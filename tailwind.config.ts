@@ -25,6 +25,7 @@ const config: Config = {
 			},
 			tertiary: {
 				DEFAULT: "#EEEAEA",
+				light: "#eeeaea",
 			},
 			"black-primary": {
 				DEFAULT: "#201F22",
