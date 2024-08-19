@@ -13,10 +13,6 @@ export default async function DashboardLayout({
 	children: React.ReactNode;
 	}) {
 	
-	// TODO: Get account info from API
-	const accountInfo = {
-		available_amount: 1000,
-	}
 	// TODO: Get user info from API
 	const userInfo = {
     "id": 19,
