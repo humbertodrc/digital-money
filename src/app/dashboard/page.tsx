@@ -8,10 +8,19 @@ export default async function DashboardPage() {
 	const accountInfo = {
 		available_amount: 1000,
 	}
+	// TODO: Get user info from API
+	const userInfo = {
+    "id": 19,
+    "firstname": "Daniel",
+    "lastname": "Rivero",
+    "dni": 30303030,
+    "email": "correo@correo.com",
+    "phone": "11999999"
+	}
 
 	return (
 		<>
-			<Header logoLink="/" logoClassName="fill-primary" userName="Humberto Rivero" />
+			<Header logoLink="/" logoClassName="fill-primary" userName={`${userInfo.firstname} ${userInfo.lastname}`} />
 			<div className="w-full h-full flex flex-row grow">
 				<aside className="hidden w-1/3 md:block xl:w-1/4 bg-primary text-black-primary">
 					{/* <Navbar/> */}
