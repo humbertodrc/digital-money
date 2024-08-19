@@ -1,3 +1,5 @@
+import ArrowRight from "@/components/common/Icons/ArrowRight";
+import Bullet from "@/components/common/Icons/Bullet";
 import { activityDictionary } from "@/constants/activityDictionary";
 import { ActivityList } from "@/interfaces/activity";
 import { formatDayOfWeek } from "@/utils/formatDayOfWeek";
@@ -10,7 +12,8 @@ export default function Activity({activityList}: ActivityList) {
     <ul className="flex flex-col gap-5">
         {activityList.map((activity) => (
           <li key={activity.id} className="w-full pb-5 flex flex-row justify-between items-center border-b border-secondary">
-          <div className="flex flex-row gap-2">
+            <div className="flex flex-row gap-4">
+              <Bullet className="fill-primary" />
               <h3>{activityDictionary[activity.type as keyof typeof activityDictionary]}</h3>
           </div>
           <div className="flex flex-col items-end">
@@ -21,7 +24,8 @@ export default function Activity({activityList}: ActivityList) {
         ))}
     </ul>
     <Link href="/dashboard/activity" className="flex flex-row justify-between">
-      <span className="font-semibold">Ver toda tu actividad</span>
+        <span className="text-base text-black font-bold">Ver toda tu actividad</span>
+        <ArrowRight />
     </Link>
   </section>
   )
