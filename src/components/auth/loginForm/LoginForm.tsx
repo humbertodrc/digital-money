@@ -1,12 +1,12 @@
 "use client";
-import {LoginFormProps, UserData} from "@/interfaces/login";
-import {useState} from "react";
+import BackIcon from "@/components/common/Icons/BackIcon";
+import { LoginFormProps, UserData } from "@/interfaces/login";
+import { postLogin } from "@/services/auth";
+import { setCookieClient } from "@/utils/cookieClient";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Step1Form from "./Step1Form";
 import Step2Form from "./Step2Form";
-import {postLogin} from "@/services/auth";
-import {useRouter} from "next/navigation";
-import BackIcon from "@/components/common/Icons/BackIcon";
-import { setCookie } from 'cookies-next';
 
 export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 	const [userData, setUserData] = useState<UserData>({email: ""});
@@ -24,14 +24,10 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 	const handlePasswordSubmit = async (data: {password: string}) => {
 		const updatedData = {...userData, password: data.password};
 
-		// TODO: manejo de errores
 		try {
 			const resp = await postLogin(updatedData);
 			if (resp.token && !resp.error) {
-				// Guardamos el token en una cookie valido por un día
-				setCookie('authToken', resp.token, {
-					expires: new Date(Date.now() + 86400 * 1000),
-				});
+				setCookieClient({name: 'authToken', value: resp.token, days: 1});
 
 				router.push("/dashboard");
 			}
@@ -40,6 +36,7 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 		}
 	};
 
+	// Manejador para regresar al paso 1
 	const handleBack = () => {
 		setStep(1);
 		setUserData({email: ""});

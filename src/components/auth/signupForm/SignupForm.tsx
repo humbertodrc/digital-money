@@ -1,13 +1,13 @@
 "use client";
-import TextInput from "@/components/common/TextInput";
-import {Controller, useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {useRouter} from "next/navigation";
-import {postSignup} from "@/services/signup";
-import {shema} from "@/schema";
-import { SignupData } from "@/interfaces/signup";
 import Button from "@/components/common/Button/Button";
-import { setCookie } from 'cookies-next';
+import TextInput from "@/components/common/TextInput";
+import { SignupData } from "@/interfaces/signup";
+import { shema } from "@/schema";
+import { postSignup } from "@/services/signup";
+import { setCookieClientRegisterSuccess } from "@/utils/cookieClient";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
+import { Controller, useForm } from "react-hook-form";
 
 
 export default function SignupForm() {
@@ -44,9 +44,7 @@ export default function SignupForm() {
 
 		if (resp) {
 			// Guardamos una cookie para saber si el registro fue exitoso expira en 2 minutos
-			setCookie('signupSuccess', 'true', {
-				expires: new Date(Date.now() + 1000 * 60 * 2),
-			});
+			setCookieClientRegisterSuccess();
 
 			// Si el registro es exitoso, redirigimos al usuario a la pagina de registro exitoso
 			router.push("/signup/success");
