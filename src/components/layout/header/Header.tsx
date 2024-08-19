@@ -46,7 +46,9 @@ export default function Header({ logoClassName, logoLink, headerClassName, links
 							<span className="text-lg font-bold text-secondary">{userName.split(" ").map((word) => word[0]).join("")}</span>
 						</div>
 						{/* Nombre */}
-						<p>Hola, {userName}</p>
+						<Link href="/dashboard">
+							Hola, {userName}
+						</Link>
 					</div>
 				)}
 			</div>
