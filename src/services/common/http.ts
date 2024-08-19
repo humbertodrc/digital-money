@@ -42,10 +42,11 @@ interface HttpGetOptions extends RequestInit {
   headers?: HeadersInit;
 }
 
-export const httpGet = async (endpoint: string, options: HttpGetOptions = {}): Promise<unknown> => {
+export const httpGet = async (endpoint: string, token: string, options: HttpGetOptions = {}): Promise<unknown> => {
   const headers = {
+    Authorization: token,
     ...defaultHeaders,
-    ...getUserConfigHeaders(),
+    // ...getUserConfigHeaders(),
     ...options.headers,
   };
 
