@@ -1,16 +1,12 @@
-
 export const metadata = {
- title: 'SEO Title',
- description: 'SEO Title',
+	title: "Dashboard",
+	description: "Digital Money Dashboard",
 };
+
 export default function DashboardLayout({
- children
+	children,
 }: {
- children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <main className="">
-      {children}
-    </main>
-  );
+	return <>{children}</>;
 }
