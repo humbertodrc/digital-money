@@ -13,10 +13,11 @@ interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean
   errorText?: string | FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined
   wrapperClassName?: string
+  noBorder?: boolean
 }
 
 const TextInput = forwardRef(function TextInput(
-  { wrapperClassName, className, type = 'text', hasError, errorText, ...props }: TextInputProps,
+  { wrapperClassName, className, type = 'text', hasError, errorText, noBorder, ...props }: TextInputProps,
   ref: React.Ref<HTMLInputElement>
 ) {
   hasError = hasError || Boolean(errorText)
@@ -30,8 +31,9 @@ const TextInput = forwardRef(function TextInput(
           'w-full rounded-lg text-black text-base transition outline-none',
           className,
           {
-            'border-primary  focus:outline-primary': !hasError,
-            'border-error  focus:outline-error': hasError
+            'border-primary  focus:outline-primary': !hasError && !noBorder,
+            'border-error  focus:outline-error': hasError,
+            'border-0 focus:border-0': noBorder
           }
         )}
         title={errorText as string}

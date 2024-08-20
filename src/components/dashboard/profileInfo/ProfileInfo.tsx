@@ -95,6 +95,8 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 											type="text"
 											value={field.value}
 											onKeyDown={handleKeyDown}
+											wrapperClassName="w-2/5"
+											noBorder={true}
 											className={clsx({
 												"text-opacity-50": editing.key !== key,
 											})}
@@ -119,10 +121,38 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 				<div className="w-full pb-2 border-b border-gray flex justify-between items-center">
 					<div className="flex flex-col md:flex-row md:gap-5 w-full">
 						<h3 className="w-1/4 font-semibold">Contraseña</h3>
-						<span className="text-black text-opacity-50">********</span>
+						{editing.key === "password" ? (
+							<Controller
+							defaultValue={""}
+							name="password"
+							control={control}
+							render={({field}) => (
+								<TextInput
+									{...field}
+									id="password"
+									type="password"
+									value={field.value}
+									onKeyDown={handleKeyDown}
+									placeholder="********"
+									noBorder={true}
+									wrapperClassName="w-2/5"
+									className={clsx({
+										"placeholder-black": editing.key == "password",
+									})}
+									errorText={errors.password?.message}
+									disabled={!editing || editing.key !== "password"}
+								/>
+							)}
+						/>
+						) : (
+								<span className="text-black text-opacity-50">********</span>
+						)}
 					</div>
 					<div className="w-6">
-						<PencilIcon className="cursor-pointer" />
+						<PencilIcon
+							className="cursor-pointer"
+							onClick={() => handleEdit("password")}
+						/>
 					</div>
 				</div>
 			</form>
