@@ -1,4 +1,5 @@
 import ArrowRight from "@/components/common/Icons/ArrowRight";
+import AccountAndAlias from "@/components/dashboard/accountAndAlias/AccountAndAlias";
 import ProfileInfo from "@/components/dashboard/profileInfo/ProfileInfo";
 import Link from "next/link";
 
@@ -12,6 +13,14 @@ export default function ProfilePage() {
 		phone: "1149458678",
 	};
 
+	const accountInfo = {
+		id: 15,
+		user_id: 19,
+		cvu: "50257992909156335",
+		alias: "PLANTA.ASADO.ARBOL",
+		available_amount: 54700,
+	};
+
 	return (
 		<>
 			<h1 className={"self-start text-black font-semibold"}>Tu perfil</h1>
@@ -20,7 +29,7 @@ export default function ProfilePage() {
 				<Link href="/dashboard/cards">Gestionar los medios de pago</Link>
 				<ArrowRight />
 			</div>
-			{/* <AccountsInfo/> */}
+			<AccountAndAlias accountInfo={accountInfo} />
 		</>
 	);
 }
