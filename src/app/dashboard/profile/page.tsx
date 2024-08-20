@@ -23,7 +23,6 @@ export default function ProfilePage() {
 
 	return (
 		<>
-			<h1 className={"self-start text-black font-semibold"}>Tu perfil</h1>
 			<ProfileInfo profileInfo={profileInfo} />
 			<div className="w-full py-5 bg-primary rounded-md text-black font-bold shadow-md pl-8 pr-14 pt-11 pb-12 flex items-center justify-between">
 				<Link
@@ -31,7 +30,7 @@ export default function ProfilePage() {
 					className="flex items-center justify-between w-full"
 				>
 					<span>Gestionar los medios de pago</span>
-					<ArrowRight />
+					<ArrowRight className="fill-secondary" />
 				</Link>
 			</div>
 			<AccountAndAlias accountInfo={accountInfo} />
