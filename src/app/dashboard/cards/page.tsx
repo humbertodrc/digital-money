@@ -119,7 +119,7 @@ export default function CardsPage() {
 					<ArrowRight className="fill-primary" />
 				</Link>
       </section>
-      {/* <CardsList cardsList={cards} /> */}
+      <CardsList cardsList={cards} />
 		</>
 	);
 }
