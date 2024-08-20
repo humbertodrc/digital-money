@@ -17,7 +17,7 @@ export default function AccountAndAlias({accountInfo}: AccountInfoProps) {
 					<h2 className="font-semibold text-lg text-primary">CVU</h2>
 					<span className="text-base font-normal">{accountInfo.cvu}</span>
 				</div>
-				{/* <CopyToClipboard value={accountInfo.cvu}/> */}
+				<CopyToClipboard value={accountInfo.cvu}/>
 			</div>
 			{/* Alias */}
 			<div className="flex flex-row justify-between items-center gap-2 py-2">
@@ -25,7 +25,7 @@ export default function AccountAndAlias({accountInfo}: AccountInfoProps) {
 					<h2 className="font-semibold text-lg text-primary">Alias</h2>
 					<span className="text-base font-normal">{accountInfo.alias}</span>
 				</div>
-				{/* <CopyToClipboard value={accountInfo.alias}/> */}
+				<CopyToClipboard value={accountInfo.alias}/>
 			</div>
 		</section>
 	);
