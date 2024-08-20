@@ -64,6 +64,7 @@ export default function SignupForm() {
 							render={({field}) => (
 								<TextInput
 									{...field}
+									className="p-5"
 									id="firstname"
 									type="text"
 									placeholder="Nombre*"
@@ -80,6 +81,7 @@ export default function SignupForm() {
 							render={({field}) => (
 								<TextInput
 									{...field}
+									className="p-5"
 									id="lastname"
 									type="text"
 									placeholder="Apellido*"
@@ -96,6 +98,7 @@ export default function SignupForm() {
 							render={({field}) => (
 								<TextInput
 									{...field}
+									className="p-5"
 									id="dni"
 									type="text"
 									placeholder="DNI*"
@@ -113,6 +116,7 @@ export default function SignupForm() {
 								<TextInput
 									{...field}
 									id="email"
+									className="p-5"
 									type="email"
 									placeholder="Correo*"
 									errorText={errors.email?.message}
@@ -138,6 +142,7 @@ export default function SignupForm() {
 								<TextInput
 									{...field}
 									id="password"
+									className="p-5"
 									type="password"
 									placeholder="Contraseña*"
 									errorText={errors.password?.message}
@@ -154,6 +159,7 @@ export default function SignupForm() {
 								<TextInput
 									{...field}
 									id="confirmPassword"
+									className="p-5"
 									type="password"
 									placeholder="Confirmar contraseña*"
 									errorText={errors.confirmPassword?.message}
@@ -171,6 +177,7 @@ export default function SignupForm() {
 									{...field}
 									id="phone"
 									type="text"
+									className="p-5"
 									placeholder="Teléfono*"
 									errorText={errors.phone?.message}
 								/>

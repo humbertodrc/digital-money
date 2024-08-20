@@ -37,6 +37,7 @@ export default function Step1Form({onSubmit, isSignupSuccess}: Step1FormProps) {
 					render={({field}) => (
 						<TextInput
 							wrapperClassName="h-24"
+							className="p-5"
 							{...field}
 							id="email"
 							type="email"

@@ -37,6 +37,7 @@ export default function Step2Form({onSubmit}: Step2FormProps) {
 							{...field}
 							id="password"
 							type="password"
+							className="p-5"
 							placeholder="Contraseña*"
 							errorText={errors.password?.message}
 						/>
