@@ -81,7 +81,7 @@ export default function Activity({activityList}: ActivityList) {
 					<span className="text-base text-black font-bold">
 						Ver toda tu actividad
 					</span>
-					<ArrowRight />
+					<ArrowRight className="fill-secondary" />
 				</Link>
 			</section>
 		</div>
