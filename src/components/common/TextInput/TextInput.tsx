@@ -27,7 +27,7 @@ const TextInput = forwardRef(function TextInput(
         ref={ref}
         {...props}
         className={clsx(
-          'w-full p-5 rounded-lg text-black text-base transition outline-none',
+          'w-full rounded-lg text-black text-base transition outline-none',
           className,
           {
             'border-primary  focus:outline-primary': !hasError,
