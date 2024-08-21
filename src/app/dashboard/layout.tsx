@@ -1,6 +1,9 @@
-import AcountInfo from "@/components/dashboard/accountInfo/AcountInfo";
+import ExpireModal from "@/components/common/modal/ExpireModal";
 import Navbar from "@/components/dashboard/navbar/Navbar";
 import Header from "@/components/layout/header/Header";
+import { getAcountInfo } from "@/services/acountInfo";
+import { getUserInfo } from "@/services/userInfo";
+import { getTokenFromCookie } from "@/utils/getTokenFromCookie";
 
 export const metadata = {
 	title: "Dashboard",
@@ -12,17 +15,9 @@ export default async function DashboardLayout({
 }: {
 	children: React.ReactNode;
 	}) {
-	
-	// TODO: Get user info from API
-	const userInfo = {
-    "id": 19,
-    "firstname": "Daniel",
-    "lastname": "Rivero",
-    "dni": 30303030,
-    "email": "correo@correo.com",
-    "phone": "11999999"
-	}
-
+	const token = getTokenFromCookie();
+	const accountInfo = await getAcountInfo(token);
+	const userInfo = await getUserInfo(accountInfo.user_id, token, "user-info");
 	
 	return (
 		<>
@@ -39,6 +34,7 @@ export default async function DashboardLayout({
 					{children}
 				</main>
 			</div>
+			<ExpireModal />
 		</>
 	);
 }
