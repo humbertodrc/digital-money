@@ -2,9 +2,9 @@
 import {Cookie} from "@/interfaces/cookie";
 import {cookies} from "next/headers";
 
-export const setCookieServerAuth = ({name, value, days}: Cookie) => {
+export const setCookieServerAuth = ({name, value, hours = 1}: Cookie) => {
 	const date = new Date();
-	date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+	date.setTime(date.getTime() + hours * 60 * 60 * 1000);
 	cookies().set(name, value, {
 		expires: date,
 	});
