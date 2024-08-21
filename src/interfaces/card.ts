@@ -1,4 +1,4 @@
-interface Card {
+export interface Card {
   id: number;
   account_id: number;
   number_id: number;
