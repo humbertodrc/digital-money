@@ -42,11 +42,27 @@ interface HttpGetOptions extends RequestInit {
   headers?: HeadersInit;
 }
 
-export const httpGet = async (endpoint: string, token: string, options: HttpGetOptions = {}): Promise<unknown> => {
+export const httpGet = async (endpoint: string, token: string , options: HttpGetOptions = {}): Promise<unknown> => {
   const headers = {
     Authorization: token,
     ...defaultHeaders,
-    // ...getUserConfigHeaders(),
+    ...getUserConfigHeaders(),
+    ...options.headers,
+  };
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    method: 'GET',
+    headers
+  });
+  return handleResponse(response);
+};
+
+export const httpGetRevalidate = async (endpoint: string, token: string, revalidateTag: string, options: HttpGetOptions = {}): Promise<unknown> => {
+  const headers = {
+    Authorization: token,
+    ...defaultHeaders,
+    ...getUserConfigHeaders(),
     ...options.headers,
   };
 
@@ -54,9 +70,13 @@ export const httpGet = async (endpoint: string, token: string, options: HttpGetO
     ...options,
     method: 'GET',
     headers,
+    next: {
+      tags: ["user-info"],
+    }
   });
   return handleResponse(response);
 };
+
 
 /**
  * Realiza una solicitud HTTP POST.
@@ -136,13 +156,38 @@ export const httpDelete = async (endpoint: string, options: HttpGetOptions = {})
   return handleResponse(response);
 };
 
+
+/**
+ * Realiza una solicitud HTTP PATCH.
+ * @param {string} endpoint - El endpoint de la solicitud.
+ * @param {object} body - Los datos del cuerpo de la solicitud.
+ * @param {RequestInit} [options={}] - Opciones adicionales para la solicitud.
+ * @returns {Promise<unknown>} - Una promesa que se resuelve con los datos de la respuesta.
+ * @throws {HttpError} - Error si la solicitud falla.
+ */
+export const httpPatch = async (endpoint: string, body: object, options: HttpGetOptions = {}): Promise<unknown> => {
+  const headers = {
+    ...defaultHeaders,
+    ...getUserConfigHeaders(),
+    ...options.headers,
+  };
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify(body),
+  });
+  return handleResponse(response);
+}
+
 // Configuración de headers de usuario
 const getUserConfigHeaders = (): HeadersInit => {
   const headers: HeadersInit = {};
   if (typeof window !== 'undefined' && !headers.Authorization) {
     const token = localStorage.getItem('acc_token');
     if (token) {
-      headers.Authorization = `${token}`;
+      headers.Authorization = JSON.parse(token);
     }
   }
 
