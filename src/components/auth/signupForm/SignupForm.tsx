@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/components/common/Button/Button";
-import TextInput from "@/components/common/TextInput";
+import Button from "@/components/common/button/Button";
+import TextInput from "@/components/common/textInput/TextInput";
 import { SignupData } from "@/interfaces/signup";
 import { shema } from "@/schema";
 import { postSignup } from "@/services/signup";
