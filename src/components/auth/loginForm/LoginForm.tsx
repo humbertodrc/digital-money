@@ -1,17 +1,19 @@
 "use client";
 import BackIcon from "@/components/common/Icons/BackIcon";
-import { LoginFormProps, UserData } from "@/interfaces/login";
-import { postLogin } from "@/services/auth";
-import { setCookieClient } from "@/utils/cookieClient";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import {LoginFormProps, UserData} from "@/interfaces/login";
+import {postLogin} from "@/services/auth";
+import {setCookieClient} from "@/utils/cookieClient";
+import {useRouter} from "next/navigation";
+import {useState} from "react";
 import Step1Form from "./Step1Form";
 import Step2Form from "./Step2Form";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 	const [userData, setUserData] = useState<UserData>({email: ""});
 	const [error, setError] = useState<string | null>(null);
 	const [step, setStep] = useState(1);
+	const {setValue}= useLocalStorage("acc_token")
 	const router = useRouter();
 
 	// Manejador para el envío del primer paso (email)
@@ -27,7 +29,8 @@ export default function LoginForm({isSignupSuccess}: LoginFormProps) {
 		try {
 			const resp = await postLogin(updatedData);
 			if (resp.token && !resp.error) {
-				setCookieClient({name: 'authToken', value: resp.token, days: 1});
+				setCookieClient({ name: "authToken", value: resp.token, hours: 1 });
+				setValue(resp.token);
 
 				router.push("/dashboard");
 			}
