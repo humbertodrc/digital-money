@@ -1,15 +1,18 @@
 'use client';
 import Bullet from "@/components/common/Icons/Bullet";
+import { Card } from "@/interfaces/card";
+import { deleteCard } from "@/services/cards";
 
 interface CardItemProps {
 	card: Card;
+	userId: number;
 }
 
-export default function CardItem({card}: CardItemProps) {
+export default function CardItem({card, userId}: CardItemProps) {
 	const lastNumbers = card.number_id.toString().slice(-4);
 
-	const handleDelete = (id: number) => {
-		console.log(`Card with id ${id} has been deleted`);
+	const handleDelete = async(id: number) => {
+		await deleteCard(userId, id);
 	};
 
 	return (
