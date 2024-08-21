@@ -1,15 +1,18 @@
 "use client";
 import PencilIcon from "@/components/common/Icons/PencilIcon";
-import TextInput from "@/components/common/TextInput";
-import {profileDictionary} from "@/constants/profileDictionary";
-import {Profile} from "@/interfaces/profile";
-import {sortKeyProfile} from "@/utils/sortKeyProfile";
+import TextInput from "@/components/common/textInput/TextInput";
+import { profileDictionary } from "@/constants/profileDictionary";
+import { Profile } from "@/interfaces/profile";
+import { patchUserInfo } from "@/services/userInfo";
+import { sortKeyProfile } from "@/utils/sortKeyProfile";
 import clsx from "clsx";
-import {KeyboardEvent, useEffect, useState} from "react";
-import {Controller, useForm} from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { KeyboardEvent, useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 
 interface ProfileInfoProps {
 	profileInfo: Profile;
+	token: string;
 }
 
 interface Editing {
@@ -17,12 +20,14 @@ interface Editing {
 	value: string | number;
 }
 
-export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
+export default function ProfileInfo({profileInfo, token}: ProfileInfoProps) {
 	// Estado para saber si se está editando un campo
 	const [editing, setEditing] = useState<Editing>({
 		key: "",
 		value: "",
 	});
+	const router = useRouter();
+
 	// Hook de react-hook-form
 	const {
 		control,
@@ -34,7 +39,8 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 	});
 
 	// Normalizar los datos del perfil
-	const profileInfoNormalized = sortKeyProfile(profileInfo);
+	let profileInfoNormalized = sortKeyProfile(profileInfo);
+	// console.log('profileInfoNormalized', profileInfoNormalized);
 
 	// Función para manejar la edición de un campo
 	const handleEdit = (key: string) => {
@@ -51,13 +57,33 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 		}
 	};
 
-	const onSubmit = (data: any) => {
-		console.log(data);
-		// Actualizar el valor en el estado profileInfoNormalized
+	const onSubmit = async (data: any) => {
+		//Actualizar el valor en el estado profileInfoNormalized
 		profileInfoNormalized[editing.key] = data[editing.key];
+
+		const body = {
+			id: profileInfo.id,
+			firstname: data[profileDictionary.name].split(" ")[0],
+			lastname: data[profileDictionary.name].split(" ")[1],
+			dni: data[profileDictionary.dni],
+			email: data[profileDictionary.email],
+			phone: data[profileDictionary.phone],
+		};
+
+		// Actualizar los datos en el servidor
+		await patchUserInfo(profileInfo.id, body);
+
+		await fetch("/api/revalidate");
+
+		router.refresh();
+
 		// Resetear el estado de edición
 		setEditing({key: "", value: ""});
 	};
+
+	// const revalidate = async () => {
+	// 	await fetch('/api/revalidate');
+	// };
 
 	// LLamar a la función onSubmit con los datos del formulario cuando se toca la tecla Enter
 	const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -68,8 +94,8 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 
 	useEffect(() => {
 		reset(profileInfoNormalized); // Resetea el formulario con los valores iniciales
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [profileInfo]);
-
 
 	return (
 		<section className="w-full p-5 flex flex-col gap-5 rounded-md bg-white text-black shadow-md md:p-10 xl:p-15">
@@ -97,7 +123,7 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 											onKeyDown={handleKeyDown}
 											wrapperClassName="w-2/5"
 											noBorder={true}
-											className={clsx({
+											className={clsx("bg-white", {
 												"text-opacity-50": editing.key !== key,
 											})}
 											errorText={errors[key]?.message}
@@ -123,29 +149,29 @@ export default function ProfileInfo({ profileInfo }: ProfileInfoProps) {
 						<h3 className="w-1/4 font-semibold">Contraseña</h3>
 						{editing.key === "password" ? (
 							<Controller
-							defaultValue={""}
-							name="password"
-							control={control}
-							render={({field}) => (
-								<TextInput
-									{...field}
-									id="password"
-									type="password"
-									value={field.value}
-									onKeyDown={handleKeyDown}
-									placeholder="********"
-									noBorder={true}
-									wrapperClassName="w-2/5"
-									className={clsx({
-										"placeholder-black": editing.key == "password",
-									})}
-									errorText={errors.password?.message}
-									disabled={!editing || editing.key !== "password"}
-								/>
-							)}
-						/>
+								defaultValue={""}
+								name="password"
+								control={control}
+								render={({field}) => (
+									<TextInput
+										{...field}
+										id="password"
+										type="password"
+										value={field.value}
+										onKeyDown={handleKeyDown}
+										placeholder="********"
+										noBorder={true}
+										wrapperClassName="w-2/5"
+										className={clsx({
+											"placeholder-black": editing.key == "password",
+										})}
+										errorText={errors.password?.message}
+										disabled={!editing || editing.key !== "password"}
+									/>
+								)}
+							/>
 						) : (
-								<span className="text-black text-opacity-50">********</span>
+							<span className="text-black text-opacity-50">********</span>
 						)}
 					</div>
 					<div className="w-6">
