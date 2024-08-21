@@ -1,4 +1,4 @@
-import Button from "@/components/common/Button/Button";
+import Button from "@/components/common/button/Button";
 
 export default function ButtonRegister() {
 	return (
