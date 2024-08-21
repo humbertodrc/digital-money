@@ -2,9 +2,10 @@
 import { Cookie } from "@/interfaces/cookie";
 import { setCookie, deleteCookie, getCookie } from 'cookies-next';
 
-export const setCookieClient = ({name, value, days}: Cookie) => {
+// Una hora de duración por defecto
+export const setCookieClient = ({name, value, hours}: Cookie) => {
   setCookie(name, value, {
-    expires: new Date(Date.now() + days * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 1000 * 60 * 60 * (hours || 1)),
   });
 }
 
