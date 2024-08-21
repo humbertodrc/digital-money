@@ -1,6 +1,5 @@
 import {PostSignupBody, PostSignupResponse} from "@/interfaces/signup";
 import {httpPost} from "./common/http";
-import { setCookieRegisterSuccess } from "@/utils/cookie";
 
 export async function postSignup(
 	body: PostSignupBody,
