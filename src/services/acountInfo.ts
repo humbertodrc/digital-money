@@ -1,6 +1,7 @@
+import { Account } from "@/interfaces/account";
 import {httpGet} from "./common/http";
 
-export async function getAcountInfo(token: string, options = {}): Promise<any> {
+export async function getAcountInfo(token: string, options = {}): Promise<Account> {
 	return httpGet('/account', token, {
 		headers: {
       "Content-Type": "application/json",
