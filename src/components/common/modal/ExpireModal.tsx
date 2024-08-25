@@ -8,7 +8,7 @@ import { removeCookieClient } from "@/utils/cookieClient";
 import useLocalStorage from "@/hooks/useLocalStorage";
 
 // Expire time in minutes
-const EXPIRE_TIME = 55;
+const EXPIRE_TIME = 58;
 export default function ExpireModal() {
   const [isExpired, setIsExpired] = useState(false);
   const router = useRouter();
