@@ -6,6 +6,7 @@ import {postCards} from "@/services/cards";
 import { convertDateFormat } from "@/utils/convertDateFormat";
 import {yupResolver} from "@hookform/resolvers/yup";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 import {Controller, useForm} from "react-hook-form";
 
 interface FormCardProps {
@@ -20,7 +21,8 @@ interface CardData {
 	cvc: string;
 }
 
-export default function FormCard({userId}: FormCardProps) {
+export default function FormCard({ userId }: FormCardProps) {
+	const router = useRouter();
 	const {
 		control,
 		handleSubmit,
@@ -38,6 +40,7 @@ export default function FormCard({userId}: FormCardProps) {
 		mode: "onChange",
 	});
 
+
 	const cardValues = watch();
 
   const onSubmit = async (data: CardData) => {
@@ -50,6 +53,9 @@ export default function FormCard({userId}: FormCardProps) {
 
 		await postCards(userId, body);
 		reset();
+		// llamar al endpoint de ravalidate
+		await fetch("/api/revalidate");
+		router.push("/dashboard/cards");
 	};
 	return (
 		<div className="bg-white rounded-xl py-6 md:py-10 px-5 md:px-16 xl:py-12 xl:px-22 w-full text-black shadow-md flex items-center flex-col gap-7 xl:mt-12">
