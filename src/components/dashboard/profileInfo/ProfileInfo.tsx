@@ -40,7 +40,6 @@ export default function ProfileInfo({profileInfo, token}: ProfileInfoProps) {
 
 	// Normalizar los datos del perfil
 	let profileInfoNormalized = sortKeyProfile(profileInfo);
-	// console.log('profileInfoNormalized', profileInfoNormalized);
 
 	// Función para manejar la edición de un campo
 	const handleEdit = (key: string) => {
@@ -61,6 +60,7 @@ export default function ProfileInfo({profileInfo, token}: ProfileInfoProps) {
 		//Actualizar el valor en el estado profileInfoNormalized
 		profileInfoNormalized[editing.key] = data[editing.key];
 
+		// Normalizar los datos del formulario
 		const body = {
 			id: profileInfo.id,
 			firstname: data[profileDictionary.name].split(" ")[0],
@@ -81,9 +81,6 @@ export default function ProfileInfo({profileInfo, token}: ProfileInfoProps) {
 		setEditing({key: "", value: ""});
 	};
 
-	// const revalidate = async () => {
-	// 	await fetch('/api/revalidate');
-	// };
 
 	// LLamar a la función onSubmit con los datos del formulario cuando se toca la tecla Enter
 	const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
