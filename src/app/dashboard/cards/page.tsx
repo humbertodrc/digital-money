@@ -10,7 +10,6 @@ export default async function CardsPage() {
 	const token = getTokenFromCookie();
 	const accountInfo = await getAcountInfo(token);
 	const cards = await getCards(accountInfo.id, token);
-	console.log(cards);
 	return (
 		<>
 			<section
@@ -34,7 +33,7 @@ export default async function CardsPage() {
 					<ArrowRight className="fill-primary" />
 				</Link>
 			</section>
-			<CardsList cardsList={cards} userId={accountInfo.user_id} />
+			<CardsList cardsList={cards} userId={accountInfo.id} />
 		</>
 	);
 }
