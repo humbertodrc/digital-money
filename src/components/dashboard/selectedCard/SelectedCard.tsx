@@ -13,7 +13,7 @@ interface SelectedCardProps {
 export default function SelectedCard({handleNextStep1, cards, userId}: SelectedCardProps) {
 	return (
 		<>
-			<section className="w-full pt-10 pl-14 pr-11 pb-11 flex flex-col rounded-md bg-secondary shadow-md md:p-10 xl:p-15">
+			<section className="w-full pt-10 pl-14 pr-11 pb-11 flex flex-col rounded-md bg-secondary shadow-md">
 				<h2 className="text-xl text-primary font-bold">Seleccionar tarjeta</h2>
 				<div className="w-full p-5 flex flex-col gap-5 rounded-md bg-white text-black md:p-10 xl:p-15 mt-11">
 					<CardsList cardsList={cards} userId={userId} canSelect />
@@ -27,7 +27,7 @@ export default function SelectedCard({handleNextStep1, cards, userId}: SelectedC
 					</Link>
           <Button
             onClick={handleNextStep1}
-						className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-56"
+						className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-60"
 					>
 						Continuar
 					</Button>
