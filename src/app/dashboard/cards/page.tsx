@@ -33,7 +33,12 @@ export default async function CardsPage() {
 					<ArrowRight className="fill-primary" />
 				</Link>
 			</section>
-			<CardsList cardsList={cards} userId={accountInfo.id} />
+			<CardsList
+				cardsList={cards}
+				userId={accountInfo.id}
+				className="p-5 shadow-md md:p-10 xl:p-15"
+				canDelete
+			/>
 		</>
 	);
 }
