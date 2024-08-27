@@ -1,8 +1,9 @@
 "use client";
 
 import {useState} from "react";
-import SelectedCard from "./SelectedCard";
+import SelectedCard from "../selectedCard/SelectedCard";
 import { Card } from "@/interfaces/card";
+import AddAmount from "../addAmount/AddAmount";
 
 interface DepositsCardsProps {
   cards: Card[];
@@ -43,7 +44,7 @@ export default function DepositsCards({cards, userId}: DepositsCardsProps) {
 	return (
 		<>
 			{step === 0 && <SelectedCard handleNextStep1={handleNextStep1} cards={cards} userId={userId} />}
-			{step === 1 && (<div>¿Cuánto querés ingresar a la cuenta?</div>)}
+			{step === 1 && <AddAmount handleNextStep2={handleNextStep2} />}
 			{step === 2 && (<div>Revisá que está todo bien</div>)}
 			{step === 3 && (<div>Ya cargamos el dinero en tu cuenta</div>)}
 		</>
