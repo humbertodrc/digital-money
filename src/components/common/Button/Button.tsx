@@ -39,7 +39,7 @@ export default function Button({
 			type={type}
 			{...props}
 			className={clsx(
-				"w-full p-5 rounded-lg text-black text-base font-bold text-center",
+				"p-5 rounded-lg text-black text-base font-bold text-center",
 				className
 			)}
 		>
