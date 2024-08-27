@@ -186,7 +186,7 @@ export default function SignupForm() {
 					</div>
 					{/* Button */}
 					<div>
-						<Button className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary">
+						<Button className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full">
 							Crear cuenta
 						</Button>
 					</div>
