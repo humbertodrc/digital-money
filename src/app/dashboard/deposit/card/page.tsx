@@ -6,11 +6,11 @@ import { getTokenFromCookie } from "@/utils/getTokenFromCookie";
 export default async function DepositCardPage() {
   const token = getTokenFromCookie();
 	const accountInfo = await getAcountInfo(token);
-	const cards = await getCards(accountInfo.id, token);
+  const cards = await getCards(accountInfo.id, token);
 
   return (
     <>
-      <DepositsCards cards={cards} userId={accountInfo.id} />
+      <DepositsCards cards={cards} accountInfo={accountInfo} />
     </>
   )
 }
