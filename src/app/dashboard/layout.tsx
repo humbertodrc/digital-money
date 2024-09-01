@@ -17,7 +17,9 @@ export default async function DashboardLayout({
 	}) {
 	const token = getTokenFromCookie();
 	const accountInfo = await getAcountInfo(token);
+	console.log(accountInfo);
 	const userInfo = await getUserInfo(accountInfo.user_id, token, "user-info");
+	console.log(userInfo);
 	
 	return (
 		<>
