@@ -14,7 +14,7 @@ export default function SuccessContainer() {
 			<main className="w-full flex flex-col items-center gap-16">
 				<div className="flex flex-col gap-8 items-center w-80 md:w-full max-w-xl">
 					<h1 className="text-2xl lg:text-5xl font-normal">Registro Exitoso</h1>
-					<CheckIcon />
+					<CheckIcon className="fill-primary" />
 					<p className="text-base font-normal text-center">
 						Hemos enviado un correo de confirmación para validar tu email, por
 						favor revisalo para iniciar sesión
