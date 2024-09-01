@@ -8,7 +8,7 @@ export default function DepositPage() {
 		<>
 			<Link
 				href="/dashboard/deposit/bank"
-				className="w-full py-16 px-9  rounded-xl bg-secondary shadow-md md:p-15 flex items-center justify-between"
+				className="w-full py-16 px-9  rounded-xl bg-black-primary shadow-md md:p-15 flex items-center justify-between"
 			>
 				<div className="flex flex-row gap-5 items-center">
 					<ProfileIcon className="text-primary" />
@@ -20,7 +20,7 @@ export default function DepositPage() {
 			</Link>
 			<Link
 				href="/dashboard/deposit/card"
-				className="w-full py-16 px-9  rounded-xl bg-secondary shadow-md md:p-15 flex items-center justify-between"
+				className="w-full py-16 px-9  rounded-xl bg-black-primary shadow-md md:p-15 flex items-center justify-between"
 			>
 				<div className="flex flex-row gap-5 items-center">
 					<CardsIcon className="text-primary" />
