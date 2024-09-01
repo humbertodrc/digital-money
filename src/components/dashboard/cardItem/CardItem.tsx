@@ -8,15 +8,15 @@ interface CardItemProps {
 	card: Card;
 	userId: number;
 	canDelete?: boolean;
-	canSelect?: boolean;
 	lastItemNoBorder?: boolean;
+	children?: React.ReactNode;
 }
 
 export default function CardItem({
 	card,
 	userId,
 	canDelete,
-	canSelect,
+	children,
 }: CardItemProps) {
 	const router = useRouter();
 	const lastNumbers = card.number_id.toString().slice(-4);
@@ -41,15 +41,7 @@ export default function CardItem({
 				</button>
 			)}
 			{/* Radio button */}
-			{canSelect && (
-				<input
-					type="radio"
-					name="card"
-					value={card.id}
-					className="w-4 h-4 border border-secondary/30 rounded-full
-					appearance-none checked:bg-primary checked:border-secondary checked:after:bg-black checked:after:rounded-full checked:after:w-2 checked:after:h-2 relative cursor-pointer checked:after:block checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:transform checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
-				/>
-			)}
+			{children && !canDelete && children}
 		</li>
 	);
 }
