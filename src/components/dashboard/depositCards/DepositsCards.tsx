@@ -1,52 +1,77 @@
 "use client";
-
+import {Account} from "@/interfaces/account";
+import {Card} from "@/interfaces/card";
 import {useState} from "react";
-import SelectedCard from "../selectedCard/SelectedCard";
-import { Card } from "@/interfaces/card";
+import {FormProvider, useForm} from "react-hook-form";
 import AddAmount from "../addAmount/AddAmount";
+import CheckDeposit from "../checkDeposit/CheckDeposit";
+import SelectedCard from "../selectedCard/SelectedCard";
+import {postDeposits} from "@/services/deposits";
+import SuccessDeposit from "../successDeposit/SuccessDeposit";
 
 interface DepositsCardsProps {
-  cards: Card[];
-  userId: number;
+	cards: Card[];
+	accountInfo: Account;
 }
 
-export default function DepositsCards({cards, userId}: DepositsCardsProps) {
-	// Steps
-  const [step, setStep] = useState(0);
-  // {
-  //     "origin": "origin",
-  //     "destination": "destination",
-  //     "dated": "2024-08-26T22:41:58.643Z",
-  //     "amount": 250
-  //   }
-  const [depositData, setDepositData] = useState({
-    origin: "origin",
-    destination: "destination",
-    dated: "",
-    amount: 0
-  });
+interface DepositData {
+	card_id: string;
+	amount: number;
+}
 
-	const handleNextStep1 = () => {
+export default function DepositsCards({
+	cards,
+	accountInfo,
+}: DepositsCardsProps) {
+	// Steps
+	const [step, setStep] = useState(0);
+
+	const methods = useForm({
+		defaultValues: {
+			card_id: "",
+			amount: 0,
+		},
+	});
+	const onSubmit = async (data: DepositData) => {
+		// Normalizar los datos y enviarlos al servidor
+		const body = {
+			origin: "origin",
+			destination: "destination",
+			dated: new Date().toISOString(),
+			amount: Number(data.amount),
+		};
+		const response = await postDeposits(accountInfo.id, body);
+
+		if (response) {
+			handleNextStep();
+		}
+	};
+
+	const handleNextStep = () => {
 		setStep((prevStep) => prevStep + 1);
 		// Despues guardar el step en localStorage
-  };
-  
-  // En el step 2 se agrega el monto a depositar
-  const handleNextStep2 = (amount: number) => {
-    setDepositData((prevData) => ({
-      ...prevData,
-      dated: new Date().toISOString(),
-      amount,
-    }));
-    setStep((prevStep) => prevStep + 1);
-  };
+	};
+
+	const handleBackStep = () => {
+		setStep((prevStep) => prevStep - 1);
+	};
 
 	return (
-		<>
-			{step === 0 && <SelectedCard handleNextStep1={handleNextStep1} cards={cards} userId={userId} />}
-			{step === 1 && <AddAmount handleNextStep2={handleNextStep2} />}
-			{step === 2 && (<div>Revisá que está todo bien</div>)}
-			{step === 3 && (<div>Ya cargamos el dinero en tu cuenta</div>)}
-		</>
+		<FormProvider {...methods}>
+			<form onSubmit={methods.handleSubmit(onSubmit)} className="w-full">
+				{step === 0 && (
+					<SelectedCard
+						handleNextStep={handleNextStep}
+						cards={cards}
+						userId={accountInfo.user_id}
+					/>
+				)}
+				{step === 1 && <AddAmount handleNextStep={handleNextStep} />}
+				{step === 2 && (
+					<CheckDeposit cvu={accountInfo.cvu} handleBackStep={handleBackStep} />
+				)}
+				{step === 3 && <SuccessDeposit cvu={accountInfo.cvu} />}
+			</form>
+		</FormProvider>
 	);
 }
