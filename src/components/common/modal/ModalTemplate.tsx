@@ -10,26 +10,10 @@ interface ModalTemplateProps {
   initialFocus?: React.MutableRefObject<HTMLElement | null> | undefined
   zIndex?: number
   hideBackdrop?: boolean
-  position?: 'center' | 'top' | 'bottom'
+  position?: 'center' | 'top' | 'bottom' | 'left' | 'right'
 }
 
-/**
- * Componente de modal personalizado utilizando Headless UI.
- *
- * @component
- *
- * @param {Object} props - Propiedades del componente.
- * @param {boolean} props.show - Indica si el modal debe mostrarse o no.
- * @param {Function} props.onClose - Función de devolución de llamada para cerrar el modal.
- * @param {ReactNode} props.children - Contenido del modal.
- * @param {Ref} [props.initialFocus=null] - Elemento que debe recibir el foco cuando el modal se abre.
- * @param {number} [props.zIndex=60]
- * @param {boolean} [props.hideBackdrop=false]
- * @param {'center' | 'top' | 'bottom'} [props.position='center']
- *
- * @returns {JSX.Element} Componente de modal personalizado.
- */
-export default function ModalTemplate({ show, onClose, children, initialFocus, zIndex = 60, hideBackdrop, position = 'center' }: ModalTemplateProps) {
+export default function ModalTemplate({ show, onClose, children, initialFocus, zIndex = 60, hideBackdrop, position = 'center' }: ModalTemplateProps & { onClose: () => void }) {
   return (
     <Transition show={show} as={Fragment}>
       <Dialog as="div" className="relative" onClose={onClose} initialFocus={initialFocus} style={{ zIndex }}>
@@ -52,6 +36,7 @@ export default function ModalTemplate({ show, onClose, children, initialFocus, z
             'items-center': position === 'center',
             'items-start': position === 'top',
             'items-end': position === 'bottom'
+            
           })}>
             <TransitionChild
               as={Fragment}
