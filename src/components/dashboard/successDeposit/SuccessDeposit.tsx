@@ -44,12 +44,15 @@ export default function SuccessDeposit({cvu}: SuccessDepositProps) {
 			</div>
 			<div className="flex gap-5 justify-end">
 				<Button
+					type="button"
 					className="bg-gray hover:bg-primary-dark focus:outline-2 focus:outline-grbg-gray w-full xl:w-60"
 					onClick={handleBackToDashboard}
 				>
 					Volver al inicio
 				</Button>
-				<Button className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-60">
+				<Button
+					type="button"
+					className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-60">
 					Descargar comprobante
 				</Button>
 			</div>
