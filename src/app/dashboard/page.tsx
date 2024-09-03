@@ -9,7 +9,6 @@ export default async function DashboardPage() {
 	const token = getTokenFromCookie();
 	const accountInfo = await getAcountInfo(token);
 	const activities = await getActivity(accountInfo.id, token);
-	console.log(activities);
 
 	// Mostar solo las primeras 10 primeras actividades
 	const activitiesShowByOrder = activities.toReversed().slice(0, 10);
@@ -18,7 +17,10 @@ export default async function DashboardPage() {
 		<>
 			<AcountInfo amount={accountInfo.available_amount} />
 			<AddMoneyAndPay />
-			<Activity activityList={activitiesShowByOrder} />
+			<Activity
+				activityList={activitiesShowByOrder}
+				showMoreActivity
+			/>
 		</>
 	);
 }
