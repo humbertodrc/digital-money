@@ -36,7 +36,9 @@ export default function CheckDeposit({cvu, handleBackStep}: CheckDepositProps) {
 						<p className="font-normal text-base">CVU {cvu}</p>
 					</div>
 				</div>
-				<Button className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-64">
+				<Button
+					type="submit"
+					className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-64">
 					Continuar
 				</Button>
 			</div>
