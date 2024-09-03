@@ -45,7 +45,7 @@ export default function Navbar() {
 			<Link
 				href="/dashboard/deposit"
 				className={clsx("text-base", {
-					"font-extrabold": pathname === navbarPaths.deposit,
+					"font-extrabold": pathname === navbarPaths.deposit || pathname === navbarPaths.depositCard || pathname === navbarPaths.depositBank,
 				})}
 			>
 				Cargar dinero
