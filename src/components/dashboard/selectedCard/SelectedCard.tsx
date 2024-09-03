@@ -28,7 +28,8 @@ export default function SelectedCard({ handleNextStep, cards, userId }: Selected
 							Nueva tarjeta
 						</span>
 					</Link>
-          <Button
+					<Button
+						type="button"
             onClick={handleNextStep}
 						className="bg-primary hover:bg-primary-dark focus:outline-2 focus:outline-primary w-full xl:w-60"
 					>
