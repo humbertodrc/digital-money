@@ -11,7 +11,7 @@ export async function getCards(id: number, token: string, options = {}): Promise
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }
@@ -25,7 +25,7 @@ export async function postCards(id: number, body: any, options = {}): Promise<an
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }
@@ -40,7 +40,7 @@ export async function deleteCard(id: number, cardId: number, options = {}): Prom
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }

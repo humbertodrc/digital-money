@@ -22,7 +22,7 @@ export async function postLogin(
 	})
 		.then(data => data as PostLoginResponse)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }

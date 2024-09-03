@@ -9,7 +9,7 @@ export async function getActivity(id: number, token: string, options = {}): Prom
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }

@@ -9,7 +9,7 @@ export async function getUserInfo(id: number, token: string, revalidateTag = "",
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }
@@ -24,7 +24,7 @@ export async function patchUserInfo(id: number, body: any, options = {}): Promis
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }

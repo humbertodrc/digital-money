@@ -16,7 +16,7 @@ export async function postDeposits(id: number, body: Deposit, options = {}): Pro
 	})
 		.then((data) => data as any)
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
 			throw error;
 		});
 }
