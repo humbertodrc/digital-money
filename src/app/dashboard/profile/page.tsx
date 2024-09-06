@@ -1,6 +1,6 @@
-import ArrowRight from "@/components/common/Icons/ArrowRight";
-import AccountAndAlias from "@/components/dashboard/accountAndAlias/AccountAndAlias";
-import ProfileInfo from "@/components/dashboard/profileInfo/ProfileInfo";
+import ArrowRight from "@/app/components/common/Icons/ArrowRight";
+import AccountAndAlias from "@/app/components/dashboard/accountAndAlias/AccountAndAlias";
+import ProfileInfo from "@/app/components/dashboard/profileInfo/ProfileInfo";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getUserInfo } from "@/services/userInfo";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";

@@ -1,6 +1,6 @@
-import AcountInfo from "@/components/dashboard/accountInfo/AcountInfo";
-import Activity from "@/components/dashboard/activity/Activity";
-import AddMoneyAndPay from "@/components/dashboard/addMoneyAndPay/AddMoneyAndPay";
+import AcountInfo from "@/app/components/dashboard/accountInfo/AcountInfo";
+import Activity from "@/app/components/dashboard/activity/Activity";
+import AddMoneyAndPay from "@/app/components/dashboard/addMoneyAndPay/AddMoneyAndPay";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getActivity } from "@/services/activity";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";

@@ -1,4 +1,4 @@
-import FormCard from "@/components/dashboard/formCard/FormCard";
+import FormCard from "@/app/components/dashboard/formCard/FormCard";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";
 

@@ -1,6 +1,6 @@
-import Card from "@/components/landing/card/Card";
-import Title from "@/components/landing/title/Title";
-import Header from "@/components/layout/header/Header";
+import Card from "@/app/components/landing/card/Card";
+import Title from "@/app/components/landing/title/Title";
+import Header from "@/app/components/layout/header/Header";
 import { landingData } from "@/data/landing";
 
 const links = [
