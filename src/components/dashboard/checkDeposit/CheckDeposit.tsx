@@ -1,3 +1,4 @@
+'use client';
 import Button from "@/components/common/button/Button";
 import EditIcon from "@/components/common/Icons/EditIcon";
 import {formatAmount} from "@/utils/formatAmount";

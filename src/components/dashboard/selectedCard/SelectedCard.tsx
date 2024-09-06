@@ -1,3 +1,4 @@
+'use client';
 import Button from "@/components/common/button/Button";
 import AddIcon from "@/components/common/Icons/AddIcon";
 import { Card } from "@/interfaces/card";

@@ -1,8 +1,7 @@
-import Button from "@/components/common/button/Button";
 import FilterIcon from "@/components/common/Icons/FilterIcon";
 import RadioInput from "@/components/common/radioInput/RadioInput";
-import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/react";
-import {ChangeEvent} from "react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { ChangeEvent } from "react";
 
 interface FilterOption {
 	label: string;
