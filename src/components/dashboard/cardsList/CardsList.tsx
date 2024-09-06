@@ -1,25 +1,25 @@
+"use client";
 import {Card} from "@/interfaces/card";
 import CardItem from "../cardItem/CardItem";
 import clsx from "clsx";
-import {Controller } from "react-hook-form";
+import {Controller} from "react-hook-form";
 import RadioInput from "@/components/common/radioInput/RadioInput";
 
 interface CardListProps {
 	cardsList: Card[];
 	userId: number;
 	canDelete?: boolean;
-  className?: string;
-  control?: any;
+	className?: string;
+	control?: any;
 }
 
 export default function CardsList({
 	cardsList,
 	userId,
 	canDelete,
-  className,
-  control,
+	className,
+	control,
 }: CardListProps) {
-	
 	return (
 		<section
 			className={clsx(
