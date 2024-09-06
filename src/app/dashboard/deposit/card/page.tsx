@@ -1,4 +1,4 @@
-import DepositsCards from "@/app/components/dashboard/depositCards/DepositsCards";
+import DepositsCards from "@/components/dashboard/depositCards/DepositsCards";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getCards } from "@/services/cards";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";

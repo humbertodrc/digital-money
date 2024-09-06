@@ -1,4 +1,4 @@
-import AccountAndAlias from "@/app/components/dashboard/accountAndAlias/AccountAndAlias";
+import AccountAndAlias from "@/components/dashboard/accountAndAlias/AccountAndAlias";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";
 

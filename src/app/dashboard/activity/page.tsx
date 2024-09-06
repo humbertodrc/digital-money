@@ -1,4 +1,4 @@
-import Activity from "@/app/components/dashboard/activity/Activity";
+import Activity from "@/components/dashboard/activity/Activity";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getActivity } from "@/services/activity";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";

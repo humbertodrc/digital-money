@@ -1,6 +1,6 @@
-import ArrowRight from "@/app/components/common/Icons/ArrowRight";
-import CardsIcon from "@/app/components/common/Icons/CardsIcon";
-import ProfileIcon from "@/app/components/common/Icons/ProfileIcon";
+import ArrowRight from "@/components/common/Icons/ArrowRight";
+import CardsIcon from "@/components/common/Icons/CardsIcon";
+import ProfileIcon from "@/components/common/Icons/ProfileIcon";
 import Link from "next/link";
 
 export default function DepositPage() {

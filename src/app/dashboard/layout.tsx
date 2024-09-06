@@ -1,6 +1,6 @@
-import ExpireModal from "@/app/components/common/modal/ExpireModal";
-import Navbar from "@/app/components/dashboard/navbar/Navbar";
-import Header from "@/app/components/layout/header/Header";
+import ExpireModal from "@/components/common/modal/ExpireModal";
+import Navbar from "@/components/dashboard/navbar/Navbar";
+import Header from "@/components/layout/header/Header";
 import { getAcountInfo } from "@/services/acountInfo";
 import { getUserInfo } from "@/services/userInfo";
 import { getTokenFromCookie } from "@/utils/getTokenFromCookie";
