@@ -1,4 +1,4 @@
-import Button from "../../common/button/Button";
+import Button from "@/components/common/button/Button";
 import TextInput from "@/components/common/textInput/TextInput";
 import {shemaPassword} from "@/schema/login";
 import {yupResolver} from "@hookform/resolvers/yup";

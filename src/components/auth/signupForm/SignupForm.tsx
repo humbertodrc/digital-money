@@ -1,5 +1,5 @@
 "use client";
-import Button from "../../common/button/Button";
+import Button from "@/components/common/button/Button";
 import TextInput from "@/components/common/textInput/TextInput";
 import { SignupData } from "@/interfaces/signup";
 import { shema } from "@/schema";

@@ -1,5 +1,5 @@
 "use client";
-import Button from "../../common/button/Button";
+import Button from "@/components/common/button/Button";
 import CheckIcon from "@/components/common/Icons/CheckIcon";
 import Header from "@/components/layout/header/Header";
 

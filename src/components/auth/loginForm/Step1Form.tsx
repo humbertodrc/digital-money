@@ -1,10 +1,11 @@
-import Button from "../../common/button/Button";
+
 import TextInput from "@/components/common/textInput/TextInput";
 import { Cookie } from "@/interfaces/login";
 import { shemaEmail } from "@/schema/login";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import ButtonRegister from "./ButtonRegister";
+import Button from "@/components/common/button/Button";
 
 interface Step1FormProps {
 	onSubmit: (data: any) => void;
