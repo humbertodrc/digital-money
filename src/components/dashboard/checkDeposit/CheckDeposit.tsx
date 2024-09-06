@@ -1,5 +1,4 @@
-'use client';
-import Button from "@/components/common/button/Button";
+import Button from "../../common/button/Button";
 import EditIcon from "@/components/common/Icons/EditIcon";
 import {formatAmount} from "@/utils/formatAmount";
 import {useFormContext} from "react-hook-form";
