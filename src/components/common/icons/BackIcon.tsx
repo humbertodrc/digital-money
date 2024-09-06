@@ -1,8 +1,10 @@
+'use client';
+
 interface CheckIconProps {
   className?: string;
 }
 
-export default function BackIcon({ className }: CheckIconProps) {
+export default function 	BackIcon({ className }: CheckIconProps) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
