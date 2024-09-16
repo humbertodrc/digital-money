@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "cookies-next": "^4.2.1",
     "html-react-parser": "^5.1.10",
-    "next": "14.2.4",
+    "next": "14.2.11",
     "react": "^18",
     "react-credit-cards-2": "^1.0.2",
     "react-dom": "^18",
