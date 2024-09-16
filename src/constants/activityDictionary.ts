@@ -1,5 +1,5 @@
 const typeDeposit = "Deposit";
-const typeTransaction = "Transfer";
+const typeTransaction = "Transaction";
 
 export const activityDictionary = {
   [typeDeposit]: "Deposito",
