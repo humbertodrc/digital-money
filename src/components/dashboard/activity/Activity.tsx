@@ -22,7 +22,7 @@ interface ActivityProps {
 const itemsPerPage = 5;
 
 export default function Activity({
-	activityList,
+	activityList = [],
 	showMoreActivity,
 	hasOptionsActivity,
 	hasPagination,

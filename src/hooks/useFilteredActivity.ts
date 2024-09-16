@@ -25,7 +25,7 @@ const isWithinLastDays = (date: Date, days: number): boolean => {
 
 // Hook para filtrar la lista de actividades
 export function useFilteredActivity(
-  activityList: ActivityItem[],
+  activityList: ActivityItem[] = [],
 ) {
 
   const [searchInput, setSearchInput] = useState<string>("");
@@ -72,14 +72,18 @@ export function useFilteredActivity(
   const filteredActivityList = activityList.filter((activity) => {
     const filterFn = filterFunctions[selectedFilter];
     const matchesFilter = filterFn ? filterFn(new Date(activity.dated)) : true;
-    const matchesSearch = activityDictionary[
-      activity.type as keyof typeof activityDictionary
-    ]
-      .toLowerCase()
-      .includes(searchInput.toLowerCase());
-
+    
+    // Verificar que el tipo de actividad existe en el diccionario
+    const activityType = activityDictionary[activity.type as keyof typeof activityDictionary];
+  
+    // Si el tipo de actividad existe, hacemos la comparación
+    const matchesSearch = activityType
+      ? activityType.toLowerCase().includes(searchInput.toLowerCase())
+      : false; // Si no existe, no se considera una coincidencia
+  
     return matchesFilter && matchesSearch;
-	});
+  });
+  
 	
 	const clearFilters = () => {
     setSelectedFilter("");
