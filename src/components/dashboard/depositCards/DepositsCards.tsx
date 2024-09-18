@@ -70,7 +70,7 @@ export default function DepositsCards({
 				{step === 2 && (
 					<CheckDeposit cvu={accountInfo.cvu} handleBackStep={handleBackStep} />
 				)}
-				{step === 3 && <SuccessOperation origin={accountInfo.cvu} destiny="Cuenta propia" />}
+				{step === 3 && <SuccessOperation title="Ya cargamos el dinero en tu cuenta" origin={accountInfo.cvu} destiny="Cuenta propia" isDeposit />}
 			</form>
 		</FormProvider>
 	);
