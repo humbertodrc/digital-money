@@ -7,7 +7,7 @@ import AddAmount from "../addAmount/AddAmount";
 import CheckDeposit from "../checkDeposit/CheckDeposit";
 import SelectedCard from "../selectedCard/SelectedCard";
 import {postDeposits} from "@/services/deposits";
-import SuccessDeposit from "../successDeposit/SuccessDeposit";
+import SuccessOperation from "../successOperation/SuccessOperation";
 
 interface DepositsCardsProps {
 	cards: Card[];
@@ -70,7 +70,7 @@ export default function DepositsCards({
 				{step === 2 && (
 					<CheckDeposit cvu={accountInfo.cvu} handleBackStep={handleBackStep} />
 				)}
-				{step === 3 && <SuccessDeposit cvu={accountInfo.cvu} />}
+				{step === 3 && <SuccessOperation origin={accountInfo.cvu} destiny="Cuenta propia" />}
 			</form>
 		</FormProvider>
 	);
