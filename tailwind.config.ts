@@ -39,6 +39,7 @@ const config: Config = {
 		},
 		fontSize: {
 			base: ["1rem", "1.5rem"], // 16px
+			xs: ["0.75rem", "1.25rem"], // 12px
 			sm: ["0.875rem", "1.25rem"], // 14px
 			md: ["1.125rem", "1.75rem"], // 18px
 			lg: ["1.25rem", "1.75rem"], // 20px
