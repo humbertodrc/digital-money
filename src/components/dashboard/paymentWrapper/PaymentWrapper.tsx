@@ -21,7 +21,7 @@ export default function PaymentWrapper({
 	cards,
 }: PaymentWrapperProps) {
 	// Steps
-	const [step, setStep] = useState(0);
+  const [step, setStep] = useState(0);
 
 	const methods = useForm({
 		defaultValues: {
@@ -66,7 +66,11 @@ export default function PaymentWrapper({
 				)}
 
 				{step === 2 && (
-					<SuccessOperation destiny={service.name}  />
+          <SuccessOperation
+            title="Ya realizaste tu pago"
+            destiny={service.name}
+            userId={accountInfo.id}
+          />
 				)}
 			</form>
 		</FormProvider>
