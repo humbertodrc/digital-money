@@ -44,3 +44,17 @@ export async function deleteCard(id: number, cardId: number, options = {}): Prom
 			throw error;
 		});
 }
+
+export async function getCardById(id: number = 0, token: string, cardId: string, options = {}): Promise<Card> {
+	return httpGet(`/accounts/${id}/cards/${cardId}`, token, {
+		headers: {
+			"Content-Type": "application/json",
+		},
+		...options,
+	})
+		.then((data) => data as any)
+		.catch((error) => {
+			console.error(error);
+			throw error;
+		});
+}
