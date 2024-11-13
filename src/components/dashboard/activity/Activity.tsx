@@ -19,7 +19,7 @@ interface ActivityProps {
 	hasPagination?: boolean;
 }
 
-const itemsPerPage = 5;
+const itemsPerPage = 10;
 
 export default function Activity({
 	activityList = [],
